@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles, Zap, Shield, Target } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, Shield, Target, Code2, Smartphone, LineChart, Palette } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { useTypingAnimation } from '../hooks/useTypingAnimation';
 
@@ -15,7 +15,7 @@ export default function HeroSection() {
   ];
 
   return (
-    <section className={`relative min-h-screen flex items-center justify-center overflow-hidden ${
+    <section style={{paddingTop:'2rem'}} className={`relative min-h-screen flex items-center justify-center overflow-hidden ${
       theme === 'light' 
         ? 'bg-gradient-to-br from-slate-100 via-purple-50 to-slate-100' 
         : 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900'
@@ -150,14 +150,14 @@ export default function HeroSection() {
             transition={{ delay: 0.9, duration: 1 }}
             className="relative group mx-auto max-w-6xl"
           >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { title: 'Web Development', icon: '💻' },
-                { title: 'Mobile Apps', icon: '📱' },
-                { title: 'Digital Marketing', icon: '📈' },
-                { title: 'Graphic Design', icon: '🎨' }
+                { title: 'Web Development', icon: Code2 },
+                { title: 'Mobile Apps', icon: Smartphone },
+                { title: 'Digital Marketing', icon: LineChart },
+                { title: 'Graphic Design', icon: Palette }
               ].map((service, index) => (
-                <motion.div
+              <motion.div
                   key={service.title}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -168,15 +168,17 @@ export default function HeroSection() {
                       : 'bg-white/5 border-white/10 hover:bg-white/10'
                   }`}
                 >
-                  <div className="text-3xl mb-3">{service.icon}</div>
+                  <service.icon className={`w-10 h-10 mb-3 mx-auto ${
+                    theme === 'light' ? 'text-purple-600' : 'text-purple-400'
+                  }`} />
                   <h3 className={`font-semibold text-sm ${
                     theme === 'light' ? 'text-gray-800' : 'text-white'
                   }`}>
                     {service.title}
                   </h3>
-                </motion.div>
+              </motion.div>
               ))}
-            </div>
+            </div> */}
           </motion.div>
 
           {/* Features Grid */}
@@ -184,7 +186,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.3, duration: 0.8 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 mb-10"
           >
             {features.map((feature, index) => (
               <motion.div
@@ -218,11 +220,11 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-8 right-1 transform -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
@@ -235,7 +237,53 @@ export default function HeroSection() {
             theme === 'light' ? 'bg-purple-400' : 'bg-white/50'
           }`}></div>
         </motion.div>
-      </motion.div>
+      </motion.div> */}
+      {/* Scroll Indicator */}
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 1.5, duration: 1 }}
+  className="absolute bottom-12 right-8 flex flex-col items-center space-y-2"
+>
+  {/* Text Label */}
+  <motion.span
+    animate={{ opacity: [1, 0.4, 1] }}
+    transition={{ duration: 2, repeat: Infinity }}
+    className={`text-xs tracking-[0.25em] uppercase ${
+      theme === "light" ? "text-purple-600" : "text-white/60"
+    }`}
+  >
+    Scroll
+  </motion.span>
+
+  {/* Indicator line with moving dot */}
+  <div className="relative h-20 w-1 rounded-full overflow-hidden">
+    <div
+      className={`absolute inset-0 ${
+        theme === "light" ? "bg-purple-200/30" : "bg-white/20"
+      }`}
+    ></div>
+    <motion.div
+      animate={{ y: [0, 60, 0] }}
+      transition={{ duration: 2, repeat: Infinity }}
+      className={`absolute top-0 left-0 w-1 h-4 rounded-full ${
+        theme === "light" ? "bg-purple-500" : "bg-white"
+      }`}
+    />
+  </div>
+
+  {/* Small icon hint (like arrow) */}
+  <motion.div
+    animate={{ y: [0, 6, 0] }}
+    transition={{ duration: 1.5, repeat: Infinity }}
+    className={`text-lg ${
+      theme === "light" ? "text-purple-500" : "text-white"
+    }`}
+  >
+    ↓
+  </motion.div>
+</motion.div>
+
     </section>
   );
 }
