@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles, Zap, Shield, Target, Code2, Smartphone, LineChart, Palette } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, Shield, Target } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { useTypingAnimation } from '../hooks/useTypingAnimation';
 
